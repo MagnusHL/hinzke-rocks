@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileHeader from '../components/ProfileHeader.astro';
+import PillarCard from '../components/PillarCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TechBadges from '../components/TechBadges.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<BaseLayout title="Magnus Hinzke — IT-Infrastruktur, Digitalisierung & Geschäftsführung">
+  <ProfileHeader />
+
+  <!-- Drei Säulen -->
+  <section class="section">
+    <h2 class="section-title">Was ich mache</h2>
+    <div class="pillars-grid">
+      <PillarCard
+        title="IT-Infrastruktur & Systemadministration"
+        icon=">"
+        pitch="Seit dem Amiga 2000 an der Kommandozeile. Kernkompetenz seit 30+ Jahren. Server aufsetzen, Netzwerke konfigurieren, Dienste deployen — im Schlaf."
+        accentColor="var(--ctp-teal)"
+        tags={['Linux', 'Docker', 'Proxmox VE', 'Hetzner Cloud', 'Dokploy', 'Traefik', 'Cloudflare', 'SSH', 'Bash', 'Uptime Kuma', 'Matomo', 'Metabase']}
+      >
+        <ul>
+          <li><strong>Server & Virtualisierung</strong> — Proxmox VE, Hetzner Cloud VPS, Dokploy (Self-Hosted PaaS), Docker Compose</li>
+          <li><strong>Netzwerk & DNS</strong> — Cloudflare (DNS, CDN, WAF, Zero Trust), UniFi, Technitium DNS</li>
+          <li><strong>Linux</strong> — 25+ Jahre (SuSE, RedHat, Gentoo, Ubuntu/Debian), Bash-Scripting</li>
+          <li><strong>Monitoring</strong> — Uptime Kuma, Matomo, SerpBear, Metabase</li>
+          <li><strong>Self-Hosted</strong> — n8n, FreeScout, Listmonk, Paperless-ngx, Roundcube, Twenty CRM, POS-Displays (6x Raspberry Pi)</li>
+        </ul>
+      </PillarCard>
+
+      <PillarCard
+        title="Digitalisierung & Automatisierung"
+        icon=">"
+        pitch="Vom Auftrag bis zur Lieferung durchautomatisiert. 15+ produktive n8n-Workflows, Shopware-Shop mit 5 Custom Plugins, ERP-Integration über drei Systeme."
+        accentColor="var(--ctp-mauve)"
+        tags={['n8n', 'Shopware 6', 'Obility ERP', 'ReFast', 'LexOffice', 'DATEV', 'GoCardless', 'Stripe', 'OpenAI API', 'Claude API', 'Enfocus Switch', 'callas pdfToolbox']}
+      >
+        <ul>
+          <li><strong>Workflow-Automation</strong> — Debitoren-Management (97 Nodes), Newsletter-Pipeline, Notification Hub, Vertriebsautomation (93 Nodes)</li>
+          <li><strong>E-Commerce</strong> — Shopware 6 mit 5 Custom PHP-Plugins, 40+ Landingpages, Store API, SEO-Automation</li>
+          <li><strong>ERP-Integration</strong> — Obility (83,6% Umsatz), ReFast (Reprographie), LexOffice, DATEV</li>
+          <li><strong>Druckvorstufe</strong> — Enfocus Switch (9 Workflows), callas pdfToolbox (24 Profile), Farbmanagement, PDF-Automation</li>
+          <li><strong>Change Management</strong> — Switch-zu-n8n Migration, Microsoft-365-zu-All-Inkl, WordPress-zu-Astro</li>
+        </ul>
+      </PillarCard>
+
+      <PillarCard
+        title="Geschäftsführer-Perspektive"
+        icon=">"
+        pitch="Einen Betrieb führen heißt: Alles gleichzeitig. Finanzen, Personal, Vertrieb, Produktion — und nebenbei die IT modernisieren."
+        accentColor="var(--ctp-peach)"
+        tags={['BWA', 'Liquiditätsplanung', 'DATEV', 'Sponsoring', 'SEO', 'Personalführung', 'Leasing', 'B2B-Vertrieb']}
+      >
+        <ul>
+          <li><strong>Unternehmensführung</strong> — Volker Hinzke GmbH (40+ Jahre, 5.000+ Kunden), 6-köpfiges Team, 100% Gesellschafter seit 2020</li>
+          <li><strong>Finanzen</strong> — BWA-Analyse, Liquiditätsplanung (Tidely), 21 Leasing-Verträge, DATEV-Abstimmung</li>
+          <li><strong>Vertrieb & Marketing</strong> — Sponsoring (VfB Lübeck, VfL Schwartau, THW Kiel), Newsletter, SEO (40+ Landingpages), Google Reviews 4,6/5</li>
+          <li><strong>Auftragsabwicklung</strong> — Anfrage bis Archivierung durchautomatisiert</li>
+          <li><strong>Personal</strong> — 5 MA + GF + Minijob, Lohnjournal via DATEV</li>
+        </ul>
+      </PillarCard>
+    </div>
+  </section>
+
+  <!-- Projekte -->
+  <section class="section">
+    <h2 class="section-title">Projekte & Ventures</h2>
+    <div class="projects-grid">
+      <ProjectCard
+        title="Volker Hinzke GmbH"
+        description="Druckerei seit 1984. Variabler Datendruck, Reprographie, Medienproduktion, Werbetechnik."
+        url="https://hinzke.de"
+        accentColor="var(--ctp-blue)"
+        features={['5.000+ Kunden', '6-köpfiges Team', '40+ Jahre am Markt', 'Vollständig digitalisierte Auftragsabwicklung']}
+      />
+      <ProjectCard
+        title="Hinzke Digital"
+        description="KI-Module und Webseiten für den Mittelstand. Astro 5, React, AI-Workflows."
+        url="https://hinzke.digital"
+        accentColor="var(--ctp-mauve)"
+        features={['Astro 5 Website', 'KI-gestützte Automatisierung', 'Mittelstands-Fokus']}
+      />
+      <ProjectCard
+        title="Hanse Graphics"
+        description="Textildruck und Veredelung. Seit 2022 in die Hinzke-Gruppe integriert."
+        accentColor="var(--ctp-teal)"
+        features={['Textildruck', 'Veredelung', 'B2B & Vereine']}
+      />
+      <ProjectCard
+        title="Flowboost"
+        description="AI Content Agents. Automatisierte Content-Erstellung mit KI."
+        accentColor="var(--ctp-peach)"
+        badge="Coming Soon"
+        features={['AI Content Agents', 'Automatisierte Erstellung', 'Mitarbeit']}
+      />
+    </div>
+  </section>
+
+  <!-- Tech-Stack -->
+  <TechBadges />
+
+  <!-- Connect -->
+  <section class="section connect-section">
+    <h2 class="section-title">Connect</h2>
+    <p class="connect-text">
+      Ich bin offen für spannende Herausforderungen im Bereich IT-Infrastruktur,
+      Digitalisierung und technische Geschäftsführung. Lass uns reden.
+    </p>
+    <SocialLinks size={28} />
+  </section>
+</BaseLayout>
+
+<style>
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .connect-section {
+    text-align: center;
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .connect-text {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    max-width: 520px;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .connect-section :global(.social-links) {
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

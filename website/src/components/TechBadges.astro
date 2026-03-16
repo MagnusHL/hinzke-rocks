@@ -1,0 +1,143 @@
+---
+interface Badge {
+  name: string;
+  logo: string;
+  color: string;
+  logoColor?: string;
+}
+
+interface Category {
+  title: string;
+  badges: Badge[];
+}
+
+const categories: Category[] = [
+  {
+    title: 'Sprachen',
+    badges: [
+      { name: 'TypeScript', logo: 'typescript', color: '3178C6' },
+      { name: 'JavaScript', logo: 'javascript', color: 'F7DF1E', logoColor: '000' },
+      { name: 'PHP', logo: 'php', color: '777BB4' },
+      { name: 'Python', logo: 'python', color: '3776AB' },
+      { name: 'Bash', logo: 'gnubash', color: '4EAA25' },
+      { name: 'SQL', logo: 'postgresql', color: '4169E1' },
+      { name: 'HTML5', logo: 'html5', color: 'E34F26' },
+      { name: 'CSS3', logo: 'css3', color: '1572B6' },
+    ],
+  },
+  {
+    title: 'Frameworks & Web',
+    badges: [
+      { name: 'Astro', logo: 'astro', color: 'BC52EE' },
+      { name: 'React', logo: 'react', color: '61DAFB', logoColor: '000' },
+      { name: 'Next.js', logo: 'nextdotjs', color: '000000' },
+      { name: 'Tailwind CSS', logo: 'tailwindcss', color: '06B6D4' },
+      { name: 'Node.js', logo: 'nodedotjs', color: '5FA04E' },
+      { name: 'Shopware', logo: 'shopware', color: '189EFF' },
+      { name: 'WordPress', logo: 'wordpress', color: '21759B' },
+    ],
+  },
+  {
+    title: 'DevOps & Infrastruktur',
+    badges: [
+      { name: 'Linux', logo: 'linux', color: 'FCC624', logoColor: '000' },
+      { name: 'Docker', logo: 'docker', color: '2496ED' },
+      { name: 'Proxmox', logo: 'proxmox', color: 'E57000' },
+      { name: 'Cloudflare', logo: 'cloudflare', color: 'F38020' },
+      { name: 'Hetzner', logo: 'hetzner', color: 'D50C2D' },
+      { name: 'Traefik', logo: 'traefikproxy', color: '24A1C1' },
+      { name: 'Git', logo: 'git', color: 'F05032' },
+      { name: 'GitHub', logo: 'github', color: '181717' },
+    ],
+  },
+  {
+    title: 'Datenbanken',
+    badges: [
+      { name: 'PostgreSQL', logo: 'postgresql', color: '4169E1' },
+      { name: 'MySQL', logo: 'mysql', color: '4479A1' },
+      { name: 'MSSQL', logo: 'microsoftsqlserver', color: 'CC2927' },
+      { name: 'Redis', logo: 'redis', color: 'FF4438' },
+      { name: 'Prisma', logo: 'prisma', color: '2D3748' },
+    ],
+  },
+  {
+    title: 'Automatisierung & Tools',
+    badges: [
+      { name: 'n8n', logo: 'n8n', color: 'EA4B71' },
+      { name: 'Home Assistant', logo: 'homeassistant', color: '41BDF5' },
+      { name: 'Obsidian', logo: 'obsidian', color: '7C3AED' },
+      { name: 'VS Code', logo: 'visualstudiocode', color: '007ACC' },
+      { name: 'Claude', logo: 'anthropic', color: 'D97757' },
+      { name: 'Stripe', logo: 'stripe', color: '635BFF' },
+    ],
+  },
+  {
+    title: 'Druckvorstufe & Medien',
+    badges: [
+      { name: 'Adobe InDesign', logo: 'adobeindesign', color: 'FF3366' },
+      { name: 'Adobe Photoshop', logo: 'adobephotoshop', color: '31A8FF' },
+      { name: 'Enfocus Switch', logo: 'data:image/svg+xml,<svg/>',  color: '2C5F2D' },
+      { name: 'callas pdfToolbox', logo: 'data:image/svg+xml,<svg/>', color: 'B22222' },
+    ],
+  },
+];
+
+function badgeUrl(badge: Badge): string {
+  const logoColor = badge.logoColor || 'white';
+  return `https://img.shields.io/badge/${encodeURIComponent(badge.name)}-${badge.color}?style=flat&logo=${badge.logo}&logoColor=${logoColor}`;
+}
+---
+
+<section class="tech section">
+  <h2 class="section-title">Tech-Stack</h2>
+  <div class="tech-grid">
+    {categories.map((cat) => (
+      <div class="tech-category">
+        <h4>{cat.title}</h4>
+        <div class="badge-row">
+          {cat.badges.map((badge) => (
+            <img
+              src={badgeUrl(badge)}
+              alt={badge.name}
+              loading="lazy"
+              height="24"
+            />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .tech-category h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .badge-row img {
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

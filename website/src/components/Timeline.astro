@@ -1,0 +1,123 @@
+---
+interface TimelineEntry {
+  year: string;
+  title: string;
+  description?: string;
+}
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="timeline">
+  {entries.map((entry) => (
+    <div class="timeline-entry">
+      <div class="timeline-marker">
+        <span class="timeline-year">{entry.year}</span>
+        <span class="timeline-dot"></span>
+      </div>
+      <div class="timeline-content">
+        <h3>{entry.title}</h3>
+        {entry.description && <p>{entry.description}</p>}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 120px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 105px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--color-border);
+  }
+
+  .timeline-entry {
+    position: relative;
+    padding-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -120px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .timeline-year {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    width: 60px;
+    text-align: right;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-accent);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-entry:hover .timeline-dot {
+    background-color: var(--color-accent);
+  }
+
+  .timeline-content {
+    padding-left: var(--spacing-lg);
+  }
+
+  .timeline-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 80px;
+    }
+
+    .timeline::before {
+      left: 68px;
+    }
+
+    .timeline-marker {
+      left: -80px;
+    }
+
+    .timeline-year {
+      width: 40px;
+      font-size: 0.75rem;
+    }
+
+    .timeline-content {
+      padding-left: var(--spacing-md);
+    }
+  }
+</style>

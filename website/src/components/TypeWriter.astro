@@ -1,0 +1,74 @@
+---
+interface Props {
+  words: string[];
+}
+
+const { words } = Astro.props;
+---
+
+<div class="typewriter" data-words={JSON.stringify(words)}>
+  <span class="typewriter-text"></span>
+  <span class="typewriter-cursor">|</span>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.typewriter').forEach((el) => {
+    const words: string[] = JSON.parse(el.dataset.words || '[]');
+    const textEl = el.querySelector('.typewriter-text')!;
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function tick() {
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        charIndex--;
+        textEl.textContent = currentWord.substring(0, charIndex);
+      } else {
+        charIndex++;
+        textEl.textContent = currentWord.substring(0, charIndex);
+      }
+
+      let delay = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        delay = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 400;
+      }
+
+      setTimeout(tick, delay);
+    }
+
+    tick();
+  });
+</script>
+
+<style>
+  .typewriter {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    min-height: 1.8rem;
+  }
+
+  .typewriter-cursor {
+    animation: blink 1s step-end infinite;
+    color: var(--color-accent);
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .typewriter {
+      font-size: 1rem;
+    }
+  }
+</style>

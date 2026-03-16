@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  icon: string;
+  pitch: string;
+  tags: string[];
+  accentColor?: string;
+}
+
+const { title, icon, pitch, tags, accentColor = 'var(--color-accent)' } = Astro.props;
+---
+
+<div class="pillar" style={`--pillar-accent: ${accentColor}`}>
+  <div class="pillar-header">
+    <span class="pillar-icon">{icon}</span>
+    <h3>{title}</h3>
+  </div>
+  <p class="pillar-pitch">{pitch}</p>
+  <div class="pillar-content">
+    <slot />
+  </div>
+  <div class="pillar-tags">
+    {tags.map((tag) => (
+      <span class="tag">{tag}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .pillar {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .pillar:hover {
+    border-color: var(--pillar-accent);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .pillar-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .pillar-icon {
+    font-size: 1.5rem;
+  }
+
+  .pillar-header h3 {
+    color: var(--pillar-accent);
+    font-size: 1.15rem;
+  }
+
+  .pillar-pitch {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .pillar-content {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .pillar-content :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .pillar-content :global(ul) {
+    list-style: none;
+    padding: 0;
+  }
+
+  .pillar-content :global(li) {
+    padding: var(--spacing-xs) 0;
+    padding-left: 1.2em;
+    position: relative;
+  }
+
+  .pillar-content :global(li::before) {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--pillar-accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .pillar-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+</style>

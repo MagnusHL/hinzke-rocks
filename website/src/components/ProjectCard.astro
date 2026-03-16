@@ -1,0 +1,106 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  features: string[];
+  url?: string;
+  accentColor?: string;
+  badge?: string;
+}
+
+const { title, description, features, url, accentColor = 'var(--color-accent)', badge } = Astro.props;
+---
+
+<div class="project" style={`--project-accent: ${accentColor}`}>
+  <div class="project-header">
+    <h3>
+      {url ? (
+        <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
+      ) : (
+        title
+      )}
+    </h3>
+    {badge && <span class="project-badge">{badge}</span>}
+  </div>
+  <p class="project-desc">{description}</p>
+  <ul class="project-features">
+    {features.map((f) => (
+      <li>{f}</li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .project {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border-left: 3px solid var(--project-accent);
+    transition: box-shadow 0.2s;
+  }
+
+  .project:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .project-header h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-header a {
+    color: var(--color-text);
+  }
+
+  .project-header a:hover {
+    color: var(--project-accent);
+  }
+
+  .project-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background-color: var(--project-accent);
+    color: white;
+    letter-spacing: 0.05em;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .project-features {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-features li {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    padding: 2px 0;
+    padding-left: 1.2em;
+    position: relative;
+  }
+
+  .project-features li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--project-accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+</style>

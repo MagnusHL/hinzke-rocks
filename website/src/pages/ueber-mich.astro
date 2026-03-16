@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+
+const timelineEntries = [
+  {
+    year: '1979',
+    title: 'Geboren in Lübeck',
+    description: 'Hansestadt, Marzipan, Ostsee. Hier aufgewachsen, hier geblieben.',
+  },
+  {
+    year: '~1989',
+    title: 'Amiga 2000 + BASIC',
+    description: 'Der Einstieg. Erst Spiele, dann "Wie funktioniert das?" — und dann BASIC-Programme tippen.',
+  },
+  {
+    year: '~1994',
+    title: 'Erste PCs & Linux',
+    description: '486er, dann SuSE Linux, RedHat, Gentoo. Stundenlang Kernel kompilieren. Die Faszination für die Kommandozeile war geboren.',
+  },
+  {
+    year: '1998',
+    title: 'Praktikum bei LyNet',
+    description: 'Linux, HTML, erste richtige Server-Erfahrung. Der Grundstein für alles was danach kam.',
+  },
+  {
+    year: '1999',
+    title: 'Bundeswehr — Luftwaffe Sanitäter',
+    description: 'Grundwehrdienst. Disziplin, Struktur und die Erkenntnis, dass Befehle nicht immer Sinn ergeben.',
+  },
+  {
+    year: '2005',
+    title: 'Heirat',
+    description: 'Sandra und ich — seitdem ein Team.',
+  },
+  {
+    year: '2009',
+    title: 'Geschäftsführung übernommen',
+    description: 'Einstieg in die Volker Hinzke GmbH. Gleichzeitig: RC-Park Lübeck e.V. gegründet — weil man ja sonst nichts zu tun hat.',
+  },
+  {
+    year: '2010',
+    title: 'Lars kommt zur Welt',
+    description: 'Kind Nummer eins. Ab jetzt wird alles anders (und besser).',
+  },
+  {
+    year: '2014',
+    title: 'Lilly kommt zur Welt',
+    description: 'Kind Nummer zwei. Das Haus wird lauter, das Leben voller.',
+  },
+  {
+    year: '2019',
+    title: 'Lennis kommt zur Welt',
+    description: 'Kind Nummer drei. Jetzt ist die Mannschaft komplett.',
+  },
+  {
+    year: '2020',
+    title: '100% Gesellschafter',
+    description: 'Volker Hinzke GmbH komplett übernommen. Mein Laden, meine Verantwortung.',
+  },
+  {
+    year: '2022',
+    title: 'Hanse Graphics integriert',
+    description: 'Textildruck und Veredelung als neue Sparte in die Gruppe geholt.',
+  },
+  {
+    year: '2024+',
+    title: 'Digitale Transformation',
+    description: 'Alles auf den Prüfstand. Von Enfocus Switch zu n8n, von Microsoft zu Self-Hosted, von analog zu automatisiert. Der Umbau läuft.',
+  },
+];
+---
+
+<BaseLayout
+  title="Über mich — Magnus Hinzke"
+  description="Der Mensch hinter der Technik. Vom Amiga 2000 zur Geschäftsführung — eine Lübecker Geschichte."
+>
+  <section class="section">
+    <h1>Über mich</h1>
+    <p class="intro">
+      Ich bin kein klassischer IT-Mensch und kein klassischer Geschäftsführer.
+      Ich bin beides — und das macht den Unterschied. Hier die Geschichte dahinter.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Timeline</h2>
+    <Timeline entries={timelineEntries} />
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Abseits der Tastatur</h2>
+    <div class="interests-grid">
+      <div class="interest">
+        <h3>RC-Modellbau</h3>
+        <p>
+          Ferngesteuerte Autos, Boote, Flugzeuge. RC-Park Lübeck e.V. gegründet.
+          Wenn es einen Motor hat und ferngesteuert ist, bin ich dabei.
+        </p>
+      </div>
+      <div class="interest">
+        <h3>Motorsport & DTM</h3>
+        <p>
+          Seit Jahren Fan. Am liebsten live an der Strecke.
+          Geschwindigkeit fasziniert — auf jeder Skala.
+        </p>
+      </div>
+      <div class="interest">
+        <h3>Vespa PK80s (1982)</h3>
+        <p>
+          Baujahr 1982, restauriert und im Einsatz.
+          Slow Travel durch Lübeck — manchmal reichen 80 Kubik.
+        </p>
+      </div>
+      <div class="interest">
+        <h3>Smart Home</h3>
+        <p>
+          Home Assistant mit Zigbee2MQTT. 100+ Automationen.
+          Das Haus denkt mit — meistens in die richtige Richtung.
+        </p>
+      </div>
+      <div class="interest">
+        <h3>Gaming</h3>
+        <p>
+          Wenn abends noch Zeit ist. Am liebsten Strategie und Simulation.
+        </p>
+      </div>
+      <div class="interest">
+        <h3>Familie</h3>
+        <p>
+          Sandra, Lars, Lilly, Lennis und ich. Fünf Leute, ein Haus, viel Leben.
+          Alles andere ordnet sich dem unter.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+    margin-top: var(--spacing-md);
+    line-height: 1.8;
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .interest {
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+  }
+
+  .interest h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent);
+  }
+
+  .interest p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .interests-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
