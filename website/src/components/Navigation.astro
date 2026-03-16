@@ -9,7 +9,9 @@ const links = [
 
 <nav class="nav">
   <div class="nav-inner">
-    <span class="nav-path">~/hinzke.rocks</span>
+    <a href="/" class="nav-logo">
+      <img src="/images/logo-hinzke-rocks.webp" alt="hinzke.rocks" class="nav-logo-img" />
+    </a>
     <div class="nav-links">
       {links.map((link) => (
         <a
@@ -38,12 +40,15 @@ const links = [
     gap: var(--spacing-lg);
   }
 
-  .nav-path {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    white-space: nowrap;
-    user-select: none;
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
   }
 
   .nav-links {
@@ -70,8 +75,8 @@ const links = [
       padding: var(--spacing-sm) var(--spacing-md);
     }
 
-    .nav-path {
-      display: none;
+    .nav-logo-img {
+      height: 32px;
     }
 
     .nav-links {

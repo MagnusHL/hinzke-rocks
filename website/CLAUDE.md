@@ -15,8 +15,8 @@ Personal-Branding-Seite für Magnus Hinzke. Astro 5, statisch, kein SSR.
 - Keine Tailwind — pures CSS mit Custom Properties
 
 ## Farben (Catppuccin Latte)
-- Accent: --ctp-mauve (#8839ef)
-- Accent Hover: --ctp-blue (#1e66f5)
+- Accent: --ctp-sky (#04a5e5)
+- Accent Hover: --ctp-sapphire (#209fb5)
 - Background: --ctp-base (#eff1f5)
 - Text: --ctp-text (#4c4f69)
 
