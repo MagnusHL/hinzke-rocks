@@ -4,7 +4,6 @@ import ProfileHeader from '../components/ProfileHeader.astro';
 import PillarCard from '../components/PillarCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import TechBadges from '../components/TechBadges.astro';
-import SocialLinks from '../components/SocialLinks.astro';
 ---
 
 <BaseLayout title="Magnus Hinzke — IT-Infrastruktur, Digitalisierung & Geschäftsführung">
@@ -88,27 +87,31 @@ import SocialLinks from '../components/SocialLinks.astro';
         features={['Textildruck', 'Veredelung', 'B2B & Vereine', 'Teil der Hinzke-Gruppe']}
       />
       <ProjectCard
+        title="Galactic Tales"
+        description="MMO-Browsergame mit persistentem Universum. Händler, Piraten und Kopfgeldjäger im Weltraum."
+        url="https://galactic-tales.eu"
+        accentColor="var(--ctp-lavender)"
+        features={['Browsergame', 'Persistentes Universum', 'Community']}
+      />
+      <ProjectCard
+        title="RC-Park Lübeck e.V."
+        description="2009 gegründet. Modellbau-Verein für ferngesteuerte Autos, Boote und Flugzeuge."
+        accentColor="var(--ctp-green)"
+        features={['RC-Modellbau', 'Vereinsgründer', 'Community']}
+      />
+      {/* <ProjectCard
         title="Flowboost"
         description="AI Content Agents. Automatisierte Content-Erstellung mit KI."
         accentColor="var(--ctp-peach)"
         badge="Coming Soon"
         features={['AI Content Agents', 'Automatisierte Erstellung', 'Mitarbeit']}
-      />
+      /> */}
     </div>
   </section>
 
   <!-- Tech-Stack -->
   <TechBadges />
 
-  <!-- Connect -->
-  <section class="section connect-section">
-    <h2 class="section-title">Connect</h2>
-    <p class="connect-text">
-      Ich bin offen für spannende Herausforderungen im Bereich IT-Infrastruktur,
-      Digitalisierung und technische Geschäftsführung. Lass uns reden.
-    </p>
-    <SocialLinks size={28} />
-  </section>
 </BaseLayout>
 
 <style>
@@ -122,22 +125,6 @@ import SocialLinks from '../components/SocialLinks.astro';
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--spacing-md);
-  }
-
-  .connect-section {
-    text-align: center;
-    padding-bottom: var(--spacing-2xl);
-  }
-
-  .connect-text {
-    font-size: 1.05rem;
-    color: var(--color-text-secondary);
-    max-width: 520px;
-    margin: 0 auto var(--spacing-md);
-  }
-
-  .connect-section :global(.social-links) {
-    justify-content: center;
   }
 
   @media (max-width: 768px) {

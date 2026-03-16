@@ -1,15 +1,18 @@
 ---
+import SocialLinks from './SocialLinks.astro';
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-links">
-      <a href="/impressum">Impressum</a>
-      <span class="footer-sep">|</span>
-      <a href="/datenschutz">Datenschutz</a>
+    <div class="footer-connect">
+      <p class="footer-cta">Lass uns reden.</p>
+      <SocialLinks size={22} />
     </div>
-    <p class="footer-copy">&copy; {year} Magnus Hinzke</p>
+    <div class="footer-legal">
+      <a href="/impressum">Impressum</a>
+      <p class="footer-copy">&copy; {year} Magnus Hinzke</p>
+    </div>
   </div>
 </footer>
 
@@ -23,43 +26,61 @@ const year = new Date().getFullYear();
   .footer-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-lg);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
 
-  .footer-links {
+  .footer-connect {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    flex-direction: column;
   }
 
-  .footer-links a {
+  .footer-cta {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-xs);
+  }
+
+  .footer-legal a {
     font-size: 0.85rem;
     color: var(--color-text-secondary);
   }
 
-  .footer-links a:hover {
+  .footer-legal a:hover {
     color: var(--color-accent);
-  }
-
-  .footer-sep {
-    color: var(--color-text-muted);
-    font-size: 0.8rem;
   }
 
   .footer-copy {
     font-size: 0.85rem;
     color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
   }
 
   @media (max-width: 768px) {
     .footer-inner {
       flex-direction: column;
+      align-items: center;
       text-align: center;
-      gap: var(--spacing-sm);
+      gap: var(--spacing-lg);
+    }
+
+    .footer-connect {
+      align-items: center;
+    }
+
+    .footer-legal {
+      align-items: center;
     }
   }
 </style>
