@@ -14,6 +14,9 @@ const year = new Date().getFullYear();
       <p class="footer-copy">&copy; {year} Magnus Hinzke</p>
     </div>
   </div>
+  <div class="footer-signature">
+    <p>Umgesetzt mit <a href="https://hinzke.digital" target="_blank" rel="noopener">Hinzke Digital</a></p>
+  </div>
 </footer>
 
 <style>
@@ -65,6 +68,26 @@ const year = new Date().getFullYear();
     font-size: 0.85rem;
     color: var(--color-text-muted);
     margin-top: var(--spacing-xs);
+  }
+
+  .footer-signature {
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    text-align: center;
+  }
+
+  .footer-signature p {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-signature a {
+    color: var(--color-text-muted);
+  }
+
+  .footer-signature a:hover {
+    color: var(--color-accent);
   }
 
   @media (max-width: 768px) {
