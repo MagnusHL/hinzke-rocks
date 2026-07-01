@@ -15,8 +15,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 # Host-Header setzen, damit der Check den Content-Block (200) trifft statt des
 # www->non-www-Redirects (301). Sonst folgt wget dem Redirect nach aussen ueber
-# Traefik und der Check haengt bei einem Ausfall im Deadlock (502). max-redirect=0
-# als Sicherheitsgurt, damit der Healthcheck nie wieder die oeffentliche URL prueft.
+# Traefik und der Check haengt bei einem Ausfall im Deadlock (502). Kein
+# --max-redirect: das BusyBox-wget in nginx:alpine kennt die Option nicht.
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider --max-redirect=0 \
+    CMD wget --no-verbose --tries=1 --spider \
     --header="Host: hinzke.rocks" http://127.0.0.1:80/ || exit 1
